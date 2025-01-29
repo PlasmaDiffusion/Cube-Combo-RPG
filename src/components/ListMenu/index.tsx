@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import { MenuOption, MenuEventType } from "../../interfaces/menuOptions";
 
-import "./index.scss";
+import "./index.css";
 
 interface Props {
   title: string;
@@ -16,7 +16,7 @@ function ListMenu({ title, options }: Props) {
           //Go back to the previous menu
           break;
         case MenuEventType.SUB_MENU:
-            //Get game state of current menu, swap menus, and rerender this component
+          //Get game state of current menu, swap menus, and rerender this component
           break;
       }
     },
@@ -24,12 +24,18 @@ function ListMenu({ title, options }: Props) {
   );
 
   return (
-    <div className="listContainer">
-      <h1>{title}</h1>
+    <div className="listContainer border-4 border-double rounded-sm border-indigo-500">
+      <h1
+        className="text-2xl
+ font-bold tracking-tight text-gray-900 p-6"
+      >
+        {title}
+      </h1>
       {options.map((option, index) => (
         <button
           key={option.name + index}
           onClick={() => onOptionClicked(option)}
+          className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded active:bg-blue-600 active:text-black"
         >
           {option.name} {option.secondaryText}
         </button>

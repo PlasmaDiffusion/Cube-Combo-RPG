@@ -3,7 +3,7 @@ import { StrictMode } from "react";
 import { Canvas } from "@react-three/fiber";
 import Box from "./components/3d-components/Box";
 
-import "./Main.scss";
+import "./Main.css";
 import ListMenu from "./components/ListMenu";
 import { MenuEventType } from "./interfaces/menuOptions";
 
