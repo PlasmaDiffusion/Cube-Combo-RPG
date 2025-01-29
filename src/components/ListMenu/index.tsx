@@ -1,5 +1,7 @@
 import { useCallback } from "react";
-import { MenuOption, MenuEventType } from "../interfaces/menuOptions";
+import { MenuOption, MenuEventType } from "../../interfaces/menuOptions";
+
+import "./index.scss";
 
 interface Props {
   title: string;
@@ -22,7 +24,7 @@ function ListMenu({ title, options }: Props) {
   );
 
   return (
-    <div>
+    <div className="listContainer">
       <h1>{title}</h1>
       {options.map((option, index) => (
         <button

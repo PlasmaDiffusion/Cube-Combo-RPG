@@ -23,6 +23,11 @@ createRoot(document.getElementById("root") as HTMLElement).render(
           eventType: MenuEventType.SUB_MENU,
           subMenuToOpen: "CharacterSelect",
         },
+        {
+          name: "Quit",
+          eventType: MenuEventType.SUB_MENU,
+          subMenuToOpen: "CharacterSelect",
+        },
       ]}
     />
   </StrictMode>
