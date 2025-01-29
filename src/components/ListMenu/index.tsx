@@ -8,6 +8,7 @@ interface Props {
   options: MenuOption[];
 }
 
+//All game events occur here once an item in the menu is selected
 function ListMenu({ title, options }: Props) {
   const onOptionClicked = useCallback(
     (option: MenuOption) => {
@@ -16,11 +17,12 @@ function ListMenu({ title, options }: Props) {
           //Go back to the previous menu
           break;
         case MenuEventType.SUB_MENU:
+          //option.subMenuToOpen
           //Get game state of current menu, swap menus, and rerender this component
           break;
       }
     },
-    [options]
+    []
   );
 
   return (
