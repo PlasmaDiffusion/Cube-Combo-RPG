@@ -5,7 +5,7 @@ import Box from "./components/3d-components/Box";
 
 import "./Main.css";
 import ListMenu from "./components/ListMenu";
-import { MenuEventType } from "./interfaces/menuOptions";
+import { menus } from "./interfaces/menus";
 
 createRoot(document.getElementById("root") as HTMLElement).render(
   <StrictMode>
@@ -15,20 +15,6 @@ createRoot(document.getElementById("root") as HTMLElement).render(
       <Box position={[-1.2, 0, 0]} />
       <Box position={[1.2, 0, 0]} />
     </Canvas>
-    <ListMenu
-      title="Cube Combo RPG"
-      options={[
-        {
-          name: "Start",
-          eventType: MenuEventType.SUB_MENU,
-          subMenuToOpen: "CharacterSelect",
-        },
-        {
-          name: "Quit",
-          eventType: MenuEventType.SUB_MENU,
-          subMenuToOpen: "CharacterSelect",
-        },
-      ]}
-    />
+    <ListMenu menu={menus[0]} />
   </StrictMode>
 );

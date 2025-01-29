@@ -1,18 +1,18 @@
 import { useCallback } from "react";
 import { MenuOption, MenuEventType } from "../../interfaces/menuOptions";
+import { Menu } from "../../interfaces/menus";
 
 import "./index.css";
 
 interface Props {
-  title: string;
-  options: MenuOption[];
+  menu: Menu;
 }
 
 //All game events occur here once an item in the menu is selected
-function ListMenu({ title, options }: Props) {
+function ListMenu({ menu }: Props) {
   const onOptionClicked = useCallback(
     (option: MenuOption) => {
-      switch (option.eventType) {
+      switch (option.commonEvent) {
         case MenuEventType.BACK:
           //Go back to the previous menu
           break;
@@ -31,9 +31,9 @@ function ListMenu({ title, options }: Props) {
         className="text-2xl
  font-bold tracking-tight text-gray-900 p-6"
       >
-        {title}
+        {menu.title}
       </h1>
-      {options.map((option, index) => (
+      { menu.options.map((option, index) => (
         <button
           key={option.name + index}
           onClick={() => onOptionClicked(option)}

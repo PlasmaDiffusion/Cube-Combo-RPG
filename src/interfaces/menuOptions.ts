@@ -1,8 +1,9 @@
 export interface MenuOption {
     name: string;
     secondaryText?: string;
-    subMenuToOpen?: string;
-    eventType: MenuEventType;
+    menuToOpen?: MenuType;
+    commonEvent?: MenuEventType;
+    uniqueEvent?: () => void;
 }
 
 export enum MenuEventType
@@ -11,4 +12,17 @@ export enum MenuEventType
     BACK,
     ATTACK,
     USE_ITEM,
+    START_GAME,
+    LOAD_GAME,
+}
+
+export enum MenuType
+{
+    MAIN_MENU,
+    CHARACTER_SELECT,
+    BATTLE,
+    ENEMY_SELECT,
+    SKILLS,
+    ITEMS,
+    SHOP
 }
