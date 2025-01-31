@@ -12,7 +12,7 @@ function Box(props: ThreeElements["mesh"]) {
       <mesh
         {...props}
         ref={ref}
-        scale={clicked ? 1.5 : 1}
+        scale={props.scale || [1, 1, 1]}
         onClick={() => click(!clicked)}
         onPointerOver={() => hover(true)}
         onPointerOut={() => hover(false)}
