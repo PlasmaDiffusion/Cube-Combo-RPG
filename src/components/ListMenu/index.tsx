@@ -12,6 +12,10 @@ interface Props {
 function ListMenu({ menu }: Props) {
   const onOptionClicked = useCallback(
     (option: MenuOption) => {
+      if (option.uniqueEvent) {
+        option.uniqueEvent();
+        return;
+      }
       switch (option.commonEvent) {
         case MenuEventType.BACK:
           //Go back to the previous menu
