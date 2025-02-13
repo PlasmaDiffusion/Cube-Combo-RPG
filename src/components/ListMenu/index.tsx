@@ -1,8 +1,15 @@
 import { useCallback } from "react";
-import { MenuOption, MenuEventType } from "../../interfaces/menuOptions";
-import { Menu } from "../../interfaces/menus";
+import {
+  MenuOption,
+  MenuEventType,
+  MenuType,
+} from "../../interfaces/menuOptions";
+import useGameStore from "../../states/gameStore";
+
+import { Menu, menus } from "../../interfaces/menus";
 
 import "./index.css";
+import { useShallow } from "zustand/shallow";
 
 interface Props {
   menu: Menu;
@@ -10,23 +17,59 @@ interface Props {
 
 //All game events occur here once an item in the menu is selected
 function ListMenu({ menu }: Props) {
+  const [
+    currentMenu,
+    previousMenu,
+    setCurrentMenu,
+    setPreviousMenu,
+    resetValuesAndStartGame,
+  ] = useGameStore(
+    useShallow((state) => [
+      state.currentMenu,
+      state.previousMenu,
+      state.setCurrentMenu,
+      state.setPreviousMenu,
+      state.resetValuesAndStartGame,
+    ])
+  );
+
   const onOptionClicked = useCallback(
     (option: MenuOption) => {
+      console.log(option.name);
+      console.log(option);
+
+      //Perform unique event
       if (option.uniqueEvent) {
         option.uniqueEvent();
-        return;
       }
       switch (option.commonEvent) {
         case MenuEventType.BACK:
           //Go back to the previous menu
+          //setCurrentMenu(previousMenu);
           break;
         case MenuEventType.SUB_MENU:
-          //option.subMenuToOpen
-          //Get game state of current menu, swap menus, and rerender this component
+          if (option.menuToOpen) {
+            setCurrentMenu(option.menuToOpen);
+            //Get game state of current menu, swap menus, and rerender this component
+          } else {
+            console.warn("menuToOpen not set for", option.name);
+          }
+          break;
+        case MenuEventType.ATTACK:
+          setPreviousMenu(MenuType.BATTLE);
+          setCurrentMenu(previousMenu);
+
+          break;
+        case MenuEventType.USE_ITEM:
+          break;
+        case MenuEventType.START_GAME:
+          resetValuesAndStartGame();
+          break;
+        case MenuEventType.LOAD_GAME:
           break;
       }
     },
-    []
+    [previousMenu, resetValuesAndStartGame, setCurrentMenu, setPreviousMenu]
   );
 
   return (
@@ -37,7 +80,7 @@ function ListMenu({ menu }: Props) {
       >
         {menu.title}
       </h1>
-      { menu.options.map((option, index) => (
+      {menu.options.map((option, index) => (
         <button
           key={option.name + index}
           onClick={() => onOptionClicked(option)}

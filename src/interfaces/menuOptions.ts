@@ -8,6 +8,7 @@ export interface MenuOption {
 
 export enum MenuEventType
 {
+    UNIQUE_EVENT_ONLY,
     SUB_MENU,
     BACK,
     ATTACK,
