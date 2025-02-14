@@ -46,9 +46,12 @@ function BattleScene() {
         intensity={Math.PI}
       />
       <pointLight position={[0, 1, 1]} />
-      <Cube position={[enemyPos.x, enemyPos.y, enemyPos.z]} />
       <CubeCharacter
-        meshProps={{ position: [playerPos.x, playerPos.y, playerPos.z] }}
+        meshProps={{ position: enemyPos, rotation: [0, Math.PI *1.2, 0] }}
+        characterType={CharacterType.Goblin}
+      />
+      <CubeCharacter
+        meshProps={{ position: playerPos , rotation: [0, Math.PI *1.8, 0]}}
         characterType={CharacterType.Wizard}
       />
       <Cube position={projectilePos} scale={0.5} />;
