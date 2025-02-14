@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useFrame } from "@react-three/fiber";
 
 import Box from "./Box";
+import WizardHat from "./Models/WizardHat";
 
 function BattleScene() {
   const [playerPos] = useState<THREE.Vector3>(new THREE.Vector3(-2, 0, 0));
@@ -34,11 +35,13 @@ function BattleScene() {
 
   return (
     <>
-      <ambientLight />
+      <ambientLight intensity={Math.PI / 2} />
+      <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} decay={0} intensity={Math.PI} />
       <pointLight position={[0, 1, 1]} />
       <Box position={[enemyPos.x, enemyPos.y, enemyPos.z]} />
       <Box position={[playerPos.x, playerPos.y, playerPos.z]} />;
       <Box position={projectilePos} scale={0.5} />;
+      <WizardHat position={[0, 0, 0]} />
     </>
   );
 }
