@@ -3,7 +3,7 @@ import  { useRef, useState } from "react";
 import { useFrame, ThreeElements } from "@react-three/fiber";
 
 
-function Box(props: ThreeElements["mesh"]) {
+function Cube(props: ThreeElements["mesh"]) {
     const ref = useRef<THREE.Mesh>(null!);
     const [hovered, hover] = useState(false);
     const [clicked, click] = useState(false);
@@ -23,4 +23,4 @@ function Box(props: ThreeElements["mesh"]) {
     );
   }
 
-export default Box;
+export default Cube;
