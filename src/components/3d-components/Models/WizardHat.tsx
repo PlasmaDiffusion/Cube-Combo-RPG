@@ -11,7 +11,7 @@ interface Props {
 }
  function WizardHat(props: Props) {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const { nodes, materials } = useGLTF('/WizardHat.glb') as any;
+  const { nodes, materials } = useGLTF('/models/WizardHat.glb') as any;
   return (
     <group {...props} dispose={null}>
       <mesh
@@ -61,6 +61,6 @@ interface Props {
   )
 }
 
-useGLTF.preload('/WizardHat.glb');
+useGLTF.preload('/models/WizardHat.glb');
 
 export default WizardHat;

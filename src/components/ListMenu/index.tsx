@@ -80,7 +80,7 @@ function ListMenu({ menu }: Props) {
       >
         {menu.title}
       </h1>
-      {menu.options.map((option, index) => (
+      {menus[currentMenu].options.map((option, index) => (
         <button
           key={option.name + index}
           onClick={() => onOptionClicked(option)}

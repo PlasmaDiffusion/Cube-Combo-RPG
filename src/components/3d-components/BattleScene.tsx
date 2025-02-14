@@ -5,6 +5,7 @@ import { useFrame } from "@react-three/fiber";
 import Cube from "./Cube";
 import CubeCharacter from "./Characters/CubeCharacter";
 import { CharacterType } from "../../enums/characterType";
+import { Stats, OrbitControls } from '@react-three/drei'
 
 function BattleScene() {
   const [playerPos] = useState<THREE.Vector3>(new THREE.Vector3(-2, 0, 0));
@@ -51,6 +52,8 @@ function BattleScene() {
         characterType={CharacterType.Wizard}
       />
       <Cube position={projectilePos} scale={0.5} />;
+      <OrbitControls />
+      <Stats />
     </>
   );
 }
